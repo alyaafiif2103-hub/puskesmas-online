@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Terima Kasih - Puskesmas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Puskesmas Online</a>
+  </div>
+</nav>
+
+<main class="container py-5">
+  <div id="kartuHolder" class="mx-auto" style="max-width:600px;"></div>
+  <div class="text-center mt-3">
+    <a class="btn btn-secondary me-2 no-print" href="daftar_antrian.html">Kembali</a>
+    <button class="btn btn-primary no-print" id="btnPrint">Cetak Kartu</button>
+    <a class="btn btn-outline-primary no-print" href="riwayat_antrian.html">Lihat Riwayat</a>
+  </div>
+</main>
+
+<script src="app.js"></script>
+<script>
+  // load kartu terakhir yang disimpan sementara
+  document.addEventListener('DOMContentLoaded', () => {
+    const lastTicketId = sessionStorage.getItem('lastTicketId');
+    if (!lastTicketId) {
+      document.getElementById('kartuHolder').innerHTML = `
+        <div class="alert alert-warning">Tidak ada data kartu. Kembali ke form untuk mendaftar.</div>`;
+      return;
+    }
+    const entries = JSON.parse(localStorage.getItem('puskesmas_antrian') || "[]");
+    const item = entries.find(i => i.id === lastTicketId);
+    if (!item) {
+      document.getElementById('kartuHolder').innerHTML = `
+        <div class="alert alert-danger">Data tidak ditemukan.</div>`;
+      return;
+    }
+
+    const html = `
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title text-center">Kartu Antrian</h4>
+          <p><strong>Nomor Antrian:</strong> <span style="font-size:28px">${item.noAntrian}</span></p>
+          <p><strong>Nama:</strong> ${item.nama}</p>
+          <p><strong>Layanan:</strong> ${item.layanan}</p>
+          <p><strong>Tanggal:</strong> ${item.tanggal}</p>
+          <p><strong>Status:</strong> <span class="badge ${item.status==='Selesai' ? 'bg-success' : 'bg-warning'}">${item.status}</span></p>
+        </div>
+      </div>`;
+    document.getElementById('kartuHolder').innerHTML = html;
+  });
+
+  document.getElementById('btnPrint').addEventListener('click', () => window.print());
+</script>
+
+</body>
+</html>

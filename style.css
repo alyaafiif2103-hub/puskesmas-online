@@ -1,0 +1,10 @@
+.poli-card {
+    border-radius: 12px;
+    transition: 0.2s;
+  }
+  
+  .poli-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  }
+  

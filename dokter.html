@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Dokter - Puskesmas Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e6f0ff;
+    color: #333;
+}
+
+header {
+    background-color: #1a73e8;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.doctor-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border: 1px solid #cce0ff;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(26, 115, 232, 0.15);
+}
+
+.doctor-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #1a73e8;
+    margin-bottom: 10px;
+}
+
+.doctor-card h2 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #1a73e8;
+    font-weight: 500;
+}
+
+.doctor-info {
+    display: none;
+    margin-top: 15px;
+    text-align: left;
+    border-top: 1px solid #cce0ff;
+    padding-top: 10px;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.doctor-info i {
+    color: #1a73e8;
+    margin-right: 8px;
+}
+
+.doctor-info a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.doctor-info a:hover {
+    text-decoration: underline;
+}
+
+.note {
+    font-style: italic;
+    color: #555;
+    margin-top: 5px;
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #e53935;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .doctor-card img {
+        width: 100px;
+        height: 100px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Daftar Dokter</h1>
+    <a class="navbar-brand" href="index.html">Kembali</a>
+</header>
+
+<div class="container">
+    <div class="doctor-card" onclick="showInfo('drA', 'badge-drA')">
+        <div class="badge" id="badge-drA">Libur</div>
+        <img src="dr. Reisa.jpg" alt="Dr. Andi">
+        <h2>Dr. Reisa Broto Asmoro</h2>
+        <h2>Dr. Umum</h2>
+        <div id="drA" class="doctor-info"></div>
+    </div>
+
+    <div class="doctor-card" onclick="showInfo('drB', 'badge-drB')">
+        <div class="badge" id="badge-drB">Libur</div>
+        <img src="gigi.jpg" alt="Dr. Budi">
+        <h2>drg. Devya Linda</h2>
+        <h2>spesialis Gigi</h2>
+        <div id="drB" class="doctor-info"></div>
+    </div>
+
+    <div class="doctor-card" onclick="showInfo('drC', 'badge-drC')">
+        <div class="badge" id="badge-drC">Libur</div>
+        <img src="anak.jpg" alt="Dr. Citra">
+        <h2>dr. Novia Kemal, M.Ked (Ped), SpA</h2>
+        <h2>Spesialis Anak</h2>
+        <div id="drC" class="doctor-info"></div>
+    </div>
+
+    <div class="doctor-card" onclick="showInfo('drD', 'badge-drD')">
+        <div class="badge" id="badge-drD">Libur</div>
+        <img src="novi.jpg" alt="Dr. Dimas">
+        <h2>dr. Novi Yanti Sari, Sp.JP, FIHA, FAPSC, HFHA, FACC</h2>
+        <h2>Spesialis Jantung</h2>
+        <div id="drD" class="doctor-info"></div>
+    </div>
+</div>
+
+<script>
+const doctors = {
+    drA: { name: "Dr. Andi", wa: "081234567890", chatStart: "08:00", chatEnd: "17:00" },
+    drB: { name: "Dr. Budi", wa: "089876543210", chatStart: "09:00", chatEnd: "16:00" },
+    drC: { name: "Dr. Citra", wa: "081298765432", chatStart: "08:30", chatEnd: "17:30" },
+    drD: { name: "Dr. Dimas", wa: "082112345678", chatStart: "10:00", chatEnd: "18:00" }
+};
+
+function showInfo(id, badgeId) {
+    const infoDiv = document.getElementById(id);
+    const badge = document.getElementById(badgeId);
+    const today = new Date();
+    const day = today.getDay(); // 0 = Minggu, 6 = Sabtu
+
+    let operationalHours = `${doctors[id].chatStart} - ${doctors[id].chatEnd}`;
+    let note = "Chat tersedia setiap hari kerja. Hari Sabtu sampai jam 12.00 siang, Hari Minggu & tanggal merah libur.";
+
+    if(day === 0) {
+        operationalHours = "Libur";
+        badge.style.display = 'block';
+    } else if(day === 6) {
+        operationalHours = `${doctors[id].chatStart} - 12:00`;
+        badge.style.display = 'block';
+    } else {
+        badge.style.display = 'none';
+    }
+
+    infoDiv.innerHTML = `
+        <div><i class="fas fa-clock"></i><strong>Jam Operasional:</strong> ${operationalHours}</div>
+        <div><i class="fab fa-whatsapp"></i><strong>WA:</strong> <a href="https://wa.me/${doctors[id].wa}" target="_blank">${doctors[id].wa}</a></div>
+        <div class="note">${note}</div>
+    `;
+
+    infoDiv.style.display = infoDiv.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendaftaran Pasien</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-primary shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">Puskesmas Online</a>
+  </div>
+</nav>
+
+<div class="container py-5">
+  <div class="card shadow-lg p-4 mx-auto" style="max-width: 550px;">
+    <h3 class="fw-bold text-primary text-center mb-4">Pendaftaran Pasien</h3>
+
+    <form id="formAntrian">
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Nama Lengkap</label>
+        <input type="text" id="nama" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Jenis Pendaftaran</label>
+        <select id="jp" class="form-select" required>
+          <option value="">Pilih Jenis Pendaftaran</option>
+          <option>Online</option>
+          <option>Offline</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Jenis Kelamin</label>
+        <select id="jk" class="form-select" required>
+          <option value="">Pilih Jenis Kelamin</option>
+          <option>Laki-laki</option>
+          <option>Perempuan</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Tempat Lahir</label>
+        <input type="text" id="tempat" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Tanggal Lahir</label>
+        <input type="date" id="tanggal_lahir" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Umur</label>
+        <input type="number" id="umur" class="form-control" readonly required>
+      </div>
+
+      <!-- ====== Tambahan Berat Badan ====== -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">Berat Badan (kg)</label>
+        <input type="number" id="berat" class="form-control" required>
+      </div>
+
+      <!-- ====== Tambahan Tinggi Badan ====== -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">Tinggi Badan (cm)</label>
+        <input type="number" id="tinggi" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Nomor HP</label>
+        <input type="number" id="telepon" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Pilih Poli</label>
+        <select id="layanan" class="form-select" required>
+          <option value="">-- Pilih Poli --</option>
+          <option>Poli Umum</option>
+          <option>Poli Gigi</option>
+          <option>Poli Anak</option>
+          <option>Poli Mata</option>
+          <option>Laboratorium</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Keluhan</label>
+        <textarea id="keluhan" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Tanggal Kunjungan</label>
+        <input type="date" id="tanggal" class="form-control" required>
+      </div>
+
+      <button class="btn btn-primary w-100 mt-3">Daftar</button>
+    </form>
+
+    <!-- Tombol Kembali ke Beranda -->
+    <div class="text-center mt-3">
+      <a href="index.html" class="btn btn-secondary">Kembali ke Beranda</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+<script>
+// AUTO HITUNG UMUR
+document.getElementById("tanggal_lahir").addEventListener("change", function () {
+  const today = new Date();
+  const birthDate = new Date(this.value);
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+
+  document.getElementById("umur").value = age;
+});
+</script>
+
+</body>
+</html>

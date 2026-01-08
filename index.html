@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Puskesmas Online</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f4f7fb;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background-image: url('Puskesmas Talise.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 33, 77, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    /* CARD CUSTOM */
+    .service-card {
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .doctor-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    footer {
+      background-color: #003b99;
+      color: white;
+      padding: 25px 0;
+      margin-top: 50px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm py-3">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4" href="index.html">Puskesmas Online</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#home">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="nomor_antrian.html">Nomor Antrian</a></li>
+        <li class="nav-item"><a class="nav-link" href="daftar_antrian.html">Antrian</a></li>
+        <li class="nav-item"><a class="nav-link" href="riwayat_antrian.html">Riwayat</a></li>
+        <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
+        <li class="nav-item"><a class="nav-link" href="dokter.html">Dokter Kami</a></li>
+        <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+        <li class="nav-item"><a class="nav-link" href="tim_kami.html">Tim Kami</a></li>
+        <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero text-center" id="home">
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content">
+    <h1 class="fw-bold display-4">Selamat Datang di Puskesmas Online</h1>
+    <p class="lead mb-4">
+      Pelayanan kesehatan modern, cepat, dan terintegrasi tanpa perlu menunggu lama.
+    </p>
+    <a href="daftar_antrian.html" class="btn btn-light btn-lg fw-bold px-4 py-2">Daftar Antrian</a>
+  </div>
+</section>
+
+<!-- TENTANG -->
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Tentang Kami</h2>
+    <p class="text-muted">
+      Puskesmas Online adalah platform digital yang dibuat untuk mempermudah masyarakat 
+      mengakses layanan kesehatan secara cepat, aman, dan nyaman.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm p-4">
+        <h5 class="fw-bold">Visi</h5>
+        <p>Mewujudkan layanan kesehatan masyarakat yang responsif, mudah diakses, dan modern.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm p-4">
+        <h5 class="fw-bold">Misi</h5>
+        <ul>
+          <li>Meningkatkan kualitas pelayanan kesehatan.</li>
+          <li>Mengurangi waktu tunggu pasien.</li>
+          <li>Mendorong penggunaan layanan kesehatan berbasis digital.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYANAN -->
+<section class="container py-5" id="layanan">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Layanan Puskesmas</h2>
+    <p class="text-muted">Berikut layanan utama yang tersedia di Puskesmas kami:</p>
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card service-card shadow-sm text-center p-4">
+        <img src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" width="80" class="mx-auto mb-3">
+        <h5 class="fw-bold">Pemeriksaan Umum</h5>
+        <p class="text-muted">Pemeriksaan kesehatan dasar untuk semua usia oleh dokter profesional.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card service-card shadow-sm text-center p-4">
+        <img src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png" width="80" class="mx-auto mb-3">
+        <h5 class="fw-bold">Poli Gigi</h5>
+        <p class="text-muted">Penanganan kesehatan gigi & mulut mulai dari scaling hingga pencabutan.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card service-card shadow-sm text-center p-4">
+        <img src="https://cdn-icons-png.flaticon.com/512/2966/2966321.png" width="80" class="mx-auto mb-3">
+        <h5 class="fw-bold">Imunisasi</h5>
+        <p class="text-muted">Pelayanan vaksin untuk anak dan dewasa, aman dan terpercaya.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DOKTER -->
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Dokter Kami</h2>
+    <p class="text-muted">Tenaga kesehatan profesional dan berpengalaman.</p>
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center p-4">
+        <img src="dr. Reisa.jpg" class="doctor-img mx-auto mb-3">
+        <h5 class="fw-bold">dr. Reisa Broto Asmoro</h5>
+        <p class="text-muted">Dokter Umum</p>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center p-4">
+        <img src="gigi.jpg" class="doctor-img mx-auto mb-3">
+        <h5 class="fw-bold">drg. Devya Linda</h5>
+        <p class="text-muted">Dokter Spesialis Gigi</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center p-4">
+        <img src="anak.jpg" class="doctor-img mx-auto mb-3">
+        <h5 class="fw-bold">dr. Novia Kemal, M.Ked (Ped), SpA</h5>
+        <p class="text-muted">Dokter Spesialis Anak</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center p-4">
+        <img src="novi.jpg" class="doctor-img mx-auto mb-3">
+        <h5 class="fw-bold">dr. Novi Yanti Sari, Sp.JP, FIHA, FAPSC, HFHA, FACC</h5>
+        <p class="text-muted">Dokter Spesialis Jantung</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ALUR -->
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Alur Pelayanan</h2>
+    <p class="text-muted">Tahapan pelayanan di Puskesmas Online:</p>
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-md-3">
+      <div class="card text-center shadow-sm p-4">
+        <h1>1</h1>
+        <p>Daftar Antrian Online</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-center shadow-sm p-4">
+        <h1>2</h1>
+        <p>Datang ke Puskesmas</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-center shadow-sm p-4">
+        <h1>3</h1>
+        <p>Pemeriksaan Dokter</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-center shadow-sm p-4">
+        <h1>4</h1>
+        <p>Selesai & Pulang</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- KONTAK -->
+<section class="container py-5" id="kontak">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Kontak & Lokasi</h2>
+    <p class="text-muted">Hubungi kami untuk bantuan lebih lanjut.</p>
+  </div>
+
+  <div class="card shadow-sm p-4">
+    <h5 class="fw-bold">Alamat</h5>
+    <p>Jl. Kesehatan No. 121, Indonesia</p>
+
+    <h5 class="fw-bold">Telepon</h5>
+    <p>0812-3456-7890</p>
+
+    <h5 class="fw-bold">Email</h5>
+    <p>puskesmasonline@gmail.com</p>
+
+    <h5 class="fw-bold">Jam Operasional</h5>
+    <p>Senin - Jumat: 08.00 - 14.00 WIB</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center">
+  <p class="mb-0">© 2025 Puskesmas Online. Semua Hak Dilindungi.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
